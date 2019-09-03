@@ -5,7 +5,16 @@ A common scenario for chatbots, voice assistants, and agents to answer user ques
 
 Think [Siri](https://www.apple.com/siri/), and its "here's what I found on the web - check it out!", but constrained to a private/custom document set.
 
-# setup
++ [Architecture overview](#architecture)
++ [Get set up](#setup-and-preparation)
++ [Build a Discovery Assistant](#discovery-assistant)
++ [Chabot-enhanced Discovery Assistant)(#discovery-chatbot)
+
+# Architecture
+
+![chatbot-architecture](/assets/chatbot-architecture.png)
+
+# Setup and preparation
 
 this workshop will exploit capabilities in the following technologies:
 + Node-RED - flow-based programming toll and environment
@@ -14,17 +23,13 @@ this workshop will exploit capabilities in the following technologies:
 
 and optionally, [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https://github.com/minishift/minishift))
 
-# architecture
-
-![chatbot-architecture](/assets/chatbot-architecture.png)
-
 ## Node-RED
 
 [Node-RED](https://nodered.org) is an open-source rapid application development and deployment tool, based on [node.js](https://nodejs.org).
 
 ![node-red](/assets/node-red.png)
 
-If you have yet had the pleasure of building applications with Node-RED, check out the [Node-RED 101 workshop](https://github.com/IBMDeveloperUK/Node-RED-Watson-101)
+If you have yet had the pleasure of building applications with Node-RED, check out the [Node-RED 101 workshop](https://github.com/IBMDeveloperUK/Node-RED-Watson-101). Follow this workshop up to the end of the [http server](https://github.com/IBMDeveloperUK/Node-RED-Watson-101#creating-a-server-with-the-http-node) section to get a basic Node-RED application running the IBM Cloud. This will give the basic experience needed to build  Node-RED applications on any of its supported platforms.
 
 ## Watson Assistant
 
@@ -32,7 +37,9 @@ If you have yet had the pleasure of building applications with Node-RED, check o
 
 ![watson assistant](/assets/watson-assistant.png)
 
-You can gain experience in defining skills through the [Watson Assistant 101 workshop](https://github.com/IBMDeveloperUK/Watson-Assistant-101)
+You can gain experience in defining skills through the [Watson Assistant 101 workshop](https://github.com/IBMDeveloperUK/Watson-Assistant-101). Labs 1,2 and 3 should be enough to get you comfortable with build a conversation skill and assistant. 
+
+This workshop will use both conversation/dialog skills and search skills to process Discovery queries.
 
 ## Watson Discovery
 
@@ -42,9 +49,17 @@ You can gain experience in defining skills through the [Watson Assistant 101 wor
 
 You provide a "corpus" of documents to be analysed and made searchable - through upload or by making available to a "crawler"; Watson Discovery "ingests" the documents, analysing them for entities (proper names, cities, countries, companies, etc), concepts, relations, and categories.
 
+To get some experience with loading up a document corpus into Watson Discovery, and building queries into that corpus, take a look this tutorial:
+
+[Discovery tutorial on Youtube](https://youtu.be/rlWvyV7vGc8 "Discovery")
+
+
+
 ## Openshift/Minishift
 
 While the Watson Discovery and Assistant services require you to have an IBM Cloud account, the Node-RED application can be run on most platforms that support node.js, as long as there is connectivity to the service instances in the IBM Cloud.
+
+If you would like to try running Node-RED as an OpenShift node.js application, you can setup a local 
 
 ![minishift](/assets/minishift.png)
 
