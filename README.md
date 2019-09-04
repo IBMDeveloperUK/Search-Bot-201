@@ -8,7 +8,7 @@ Think [Siri](https://www.apple.com/siri/), and its "here's what I found on the w
 + [Architecture overview](#architecture)
 + [Get set up](#setup-and-preparation)
 + [Build a Discovery Assistant](#discovery-assistant)
-+ [Chabot-enhanced Discovery Assistant)(#discovery-chatbot)
++ [Chabot-enhanced Discovery Assistant](#discovery-chatbot)
 
 # Architecture
 
@@ -21,7 +21,7 @@ this workshop will exploit capabilities in the following technologies:
 + Watson Assistant - natural language dialog support
 + Watson Discovery - content/document query and retrieval
 
-and optionally, [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https://github.com/minishift/minishift))
+using [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https://github.com/minishift/minishift)) as the Cloud Network component.
 
 ## Node-RED
 
@@ -53,8 +53,6 @@ To get some experience with loading up a document corpus into Watson Discovery, 
 
 [Discovery tutorial on Youtube](https://youtu.be/rlWvyV7vGc8 "Discovery")
 
-
-
 ## Openshift/Minishift
 
 While the Watson Discovery and Assistant services require you to have an IBM Cloud account, the Node-RED application can be run on most platforms that support node.js, as long as there is connectivity to the service instances in the IBM Cloud.
@@ -69,7 +67,7 @@ To get the experience of using Openshift as a delivery platform, you can use the
 
 The following tutorial shows how to set up a Search Assistant using a combination of a dialog skill and a search skill.
 
-The use of search skills requires that your Watson Assistant service instance be either upgraded to the Plus plan, or enabled for the free Plus plan 30-day trail.
+**Note:** The use of search skills requires that your Watson Assistant service instance be either upgraded to the Plus plan, or enabled for the free Plus plan 30-day trail.
 
 ![plus-plan-trial](/assets/plus-plan-trial.png)
 
