@@ -1,5 +1,5 @@
 # search-bot-201
-Build a chatbot to handle conversational search against a document base with Watson Discovery and Watson Assistant
+Build a chatbot in OpenShift to handle conversational search against a document base with Watson Discovery and Watson Assistant
 
 A common scenario for chatbots, voice assistants, and agents to answer user questions from preconfigured "FAQ" responses, or produce search results from a set of documents and content relevant to the user's domain.
 
@@ -98,6 +98,10 @@ This is where Node-RED can be used to rapidly build a user interface, and logic 
 ![node-red-flow](/assets/node-red-flow.png)
 
 This flow can be created by importing the following json into the Node-RED editor:
+
+<details>
+	<summary>Node-red-flow json source</summary>
+	
 ```
 [{
 	"id": "d4c8a74c.53eef8",
@@ -350,6 +354,8 @@ This flow can be created by importing the following json into the Node-RED edito
 	]
 }]
 ```
+
+</details>	
 
 After importing the flow into Node-RED, you will need to configure the `assistant V2` node to include the API key and assistant ID for your Watson search assistant.
 
