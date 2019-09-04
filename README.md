@@ -1,4 +1,4 @@
-# search-bot-101
+# search-bot-201
 Build a chatbot to handle conversational search against a document base with Watson Discovery and Watson Assistant
 
 A common scenario for chatbots, voice assistants, and agents to answer user questions from preconfigured "FAQ" responses, or produce search results from a set of documents and content relevant to the user's domain.
@@ -29,7 +29,11 @@ using [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https
 
 ![node-red](/assets/node-red.png)
 
-If you have yet had the pleasure of building applications with Node-RED, check out the [Node-RED introduction](https://github.com/watson-developer-cloud/node-red-labs/tree/master/introduction_to_node_red). This will give you the basic experience needed to build  Node-RED applications on any of its supported platforms.
+If you have yet had the pleasure of building applications with Node-RED, check out
+
+**Tutorial:** [Node-RED introduction](https://github.com/watson-developer-cloud/node-red-labs/tree/master/introduction_to_node_red). 
+
+This will give you the basic experience needed to build  Node-RED applications on any of its supported platforms.
 
 ## Watson Assistant
 
@@ -37,7 +41,11 @@ If you have yet had the pleasure of building applications with Node-RED, check o
 
 ![watson assistant](/assets/watson-assistant.png)
 
-You can gain experience in defining skills through the [Watson Assistant 101 workshop](https://github.com/IBMDeveloperUK/Watson-Assistant-101). Labs 1,2 and 3 should be enough to get you comfortable with build a conversation skill and assistant. 
+You can gain experience in defining skills through
+
+**Tutorial:** [Watson Assistant 101 workshop](https://github.com/IBMDeveloperUK/Watson-Assistant-101). 
+
+Labs 1,2 and 3 should be enough to get you comfortable with build a conversation skill and assistant. 
 
 This workshop will use both conversation/dialog skills and search skills to process Discovery queries.
 
@@ -51,7 +59,7 @@ You provide a "corpus" of documents to be analysed and made searchable - through
 
 To get some experience with loading up a document corpus into Watson Discovery, and building queries into that corpus, take a look this tutorial:
 
-[Discovery tutorial on Youtube](https://youtu.be/rlWvyV7vGc8 "Discovery")
+**Tutorial:** [Discovery tutorial on Youtube](https://youtu.be/rlWvyV7vGc8 "Discovery")
 
 ## Openshift/Minishift
 
@@ -61,7 +69,15 @@ If you would like to try running Node-RED as an OpenShift node.js application, y
 
 ![minishift](/assets/minishift.png)
 
-To get the experience of using Openshift as a delivery platform, you can use the Minishift local installation - you'll find a lightweight introduction to this at [Minishift 101](https://github.com/IBMDeveloperUK/minishift101)
+To get the experience of using Openshift as a delivery platform, you can use the Minishift local installation - you'll find a lightweight introduction to this at 
+
+**Tutorial:** [Minishift 101](https://github.com/IBMDeveloperUK/minishift101)
+
+## Launching Node-RED in Minishift
+
+If you have working Minishift environment, you can deploy Node-RED into the cluster using the steps in this workshop:
+
+[Node-RED starter](https://github.com/IBMDeveloperUK/node-red-workshop-starter)
 
 # Discovery Assistant
 
@@ -71,5 +87,279 @@ The following tutorial shows how to set up a Search Assistant using a combinatio
 
 ![plus-plan-trial](/assets/plus-plan-trial.png)
 
-[create a search assistant](https://cloud.ibm.com/docs/services/assistant?topic=assistant-skill-search-add)
+**Tutorial:** [create a Watson Search Assistant](https://cloud.ibm.com/docs/services/assistant?topic=assistant-skill-search-add)
 
+# Discovery Chatbot
+
+Once you have a Watson Discovery instance, and a Watson Assistant service, you can build a chatbot application to manage the flow of interactions and information presentation between the user and the Assistant and Discovery services.
+
+This is where Node-RED can be used to rapidly build a user interface, and logic flow.
+
+![node-red-flow](/assets/node-red-flow.png)
+
+This flow can be created by importing the following json into the Node-RED editor:
+```
+[{
+	"id": "d4c8a74c.53eef8",
+	"type": "tab",
+	"label": "Flow 1",
+	"disabled": false,
+	"info": ""
+}, {
+	"id": "8a30be24.3d5ec",
+	"type": "http in",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"url": "/chat",
+	"method": "post",
+	"upload": false,
+	"swaggerDoc": "",
+	"x": 130,
+	"y": 100,
+	"wires": [
+		["7815d1ec.001188", "fa83fdaa.695de8"]
+	]
+}, {
+	"id": "7815d1ec.001188",
+	"type": "change",
+	"z": "d4c8a74c.53eef8",
+	"name": "history-in",
+	"rules": [{
+		"t": "set",
+		"p": "payload",
+		"pt": "msg",
+		"to": "req.body.in",
+		"tot": "msg"
+	}, {
+		"t": "set",
+		"p": "history",
+		"pt": "msg",
+		"to": "  \"<div style='color:green;'>\" \t& payload\t& \"</div>\"\t& req.body.history\t",
+		"tot": "jsonata"
+	}],
+	"action": "",
+	"property": "",
+	"from": "",
+	"to": "",
+	"reg": false,
+	"x": 320,
+	"y": 100,
+	"wires": [
+		["ee68544a.99a7c8"]
+	]
+}, {
+	"id": "fa83fdaa.695de8",
+	"type": "debug",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"active": false,
+	"tosidebar": true,
+	"console": false,
+	"tostatus": false,
+	"complete": "true",
+	"x": 310,
+	"y": 220,
+	"wires": []
+}, {
+	"id": "8048a2d4.cbf33",
+	"type": "http in",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"url": "/chat",
+	"method": "get",
+	"upload": false,
+	"swaggerDoc": "",
+	"x": 120,
+	"y": 300,
+	"wires": [
+		["647ed860.2859f", "fa83fdaa.695de8"]
+	]
+}, {
+	"id": "24251ccf.8cb444",
+	"type": "inject",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"topic": "",
+	"payload": "hello",
+	"payloadType": "str",
+	"repeat": "",
+	"crontab": "",
+	"once": false,
+	"onceDelay": 0.1,
+	"x": 330,
+	"y": 160,
+	"wires": [
+		["ee68544a.99a7c8"]
+	]
+}, {
+	"id": "c0cbb01.d83a1d",
+	"type": "debug",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"active": true,
+	"tosidebar": true,
+	"console": false,
+	"tostatus": false,
+	"complete": "true",
+	"x": 930,
+	"y": 100,
+	"wires": []
+}, {
+	"id": "a2b4be3c.ecb018",
+	"type": "template",
+	"z": "d4c8a74c.53eef8",
+	"name": "dialog",
+	"field": "payload",
+	"fieldType": "msg",
+	"format": "handlebars",
+	"syntax": "mustache",
+	"template": "{{#payload}}\n  {{#output}}\n    {{#generic}}\n    {{text}}\n    {{/generic}}\n  {{/output}}\n{{/payload}}",
+	"output": "str",
+	"x": 690,
+	"y": 140,
+	"wires": [
+		["dae785b.579ddf8"]
+	]
+}, {
+	"id": "647ed860.2859f",
+	"type": "template",
+	"z": "d4c8a74c.53eef8",
+	"name": "dialog/form",
+	"field": "payload",
+	"fieldType": "msg",
+	"format": "handlebars",
+	"syntax": "mustache",
+	"template": "<h1>chatting with Watson</h1>\n\n<form method=POST>\n    <input type=text name=in><input type=submit>\n    <input type=text name=history hidden value=\"{{{history}}}\">\n</form>\n<div>\n    {{{history}}}\n</div>",
+	"output": "str",
+	"x": 790,
+	"y": 300,
+	"wires": [
+		["aab49b0b.b783d8"]
+	]
+}, {
+	"id": "dae785b.579ddf8",
+	"type": "change",
+	"z": "d4c8a74c.53eef8",
+	"name": "history-out",
+	"rules": [{
+		"t": "set",
+		"p": "history",
+		"pt": "msg",
+		"to": "  \"<div style='color:red;'>\" \t& payload\t& \"</div>\"\t& history\t",
+		"tot": "jsonata"
+	}],
+	"action": "",
+	"property": "",
+	"from": "",
+	"to": "",
+	"reg": false,
+	"x": 870,
+	"y": 180,
+	"wires": [
+		["647ed860.2859f"]
+	]
+}, {
+	"id": "aab49b0b.b783d8",
+	"type": "http response",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"statusCode": "",
+	"headers": {},
+	"x": 930,
+	"y": 300,
+	"wires": []
+}, {
+	"id": "ee68544a.99a7c8",
+	"type": "watson-assistant-v2",
+	"z": "d4c8a74c.53eef8",
+	"name": "",
+	"default-endpoint": false,
+	"service-endpoint": "https://gateway.watsonplatform.net/assistant/api",
+	"assistant_id": "<<your-assistant-id>>",
+	"debug": false,
+	"restart": false,
+	"return_context": true,
+	"alternate_intents": false,
+	"multisession": true,
+	"timeout": "",
+	"optout-learning": false,
+	"x": 530,
+	"y": 100,
+	"wires": [
+		["c0cbb01.d83a1d", "a28454e7.31b6d8"]
+	]
+}, {
+	"id": "a28454e7.31b6d8",
+	"type": "switch",
+	"z": "d4c8a74c.53eef8",
+	"name": "type",
+	"property": "payload.output.generic[0].response_type",
+	"propertyType": "msg",
+	"rules": [{
+		"t": "eq",
+		"v": "text",
+		"vt": "str"
+	}, {
+		"t": "eq",
+		"v": "search",
+		"vt": "str"
+	}, {
+		"t": "else"
+	}],
+	"checkall": "true",
+	"repair": false,
+	"outputs": 3,
+	"x": 530,
+	"y": 180,
+	"wires": [
+		["a2b4be3c.ecb018"],
+		["e6504a00.5649a8"],
+		["fbc00ace.86d468"]
+	]
+}, {
+	"id": "e6504a00.5649a8",
+	"type": "template",
+	"z": "d4c8a74c.53eef8",
+	"name": "search",
+	"field": "payload",
+	"fieldType": "msg",
+	"format": "handlebars",
+	"syntax": "mustache",
+	"template": "{{#payload}}\n  {{#output}}\n    {{#generic}}\n    {{header}}\n    {{#results}}\n    <details>\n        <summary>{{title}} ({{result_metadata.confidence}})</summary>\n        {{{highlight.body}}}\n    </details>\n    {{/results}}\n    {{/generic}}\n  {{/output}}\n{{/payload}}",
+	"output": "str",
+	"x": 690,
+	"y": 180,
+	"wires": [
+		["dae785b.579ddf8"]
+	]
+}, {
+	"id": "fbc00ace.86d468",
+	"type": "template",
+	"z": "d4c8a74c.53eef8",
+	"name": "other",
+	"field": "payload",
+	"fieldType": "msg",
+	"format": "handlebars",
+	"syntax": "mustache",
+	"template": "{{#payload}}\n  {{#output}}\n    {{#text}}\n    {{.}}\n    {{/text}}\n  {{/output}}\n{{/payload}}",
+	"output": "str",
+	"x": 690,
+	"y": 220,
+	"wires": [
+		["dae785b.579ddf8"]
+	]
+}]
+```
+
+After importing the flow into Node-RED, you will need to configure the `assistant V2` node to include the API key and assistant ID for your Watson search assistant.
+
++ access the settings for the Assistant:
+![assistant-settings](/assets/assistant-settings.png)
++ copy the API and Assistant ID from the API details view:
+![assistant-api-settings](/assets/assistant-api-settings.png)
++ paste the settings into the Node-RED Assistant node:
+![node-red-assistant-settings](/assets/node-red-assistant-settings.png)
+
+Deploy the updates to Node-RED, and visit the `/chat` page of your Node-RED application, and entry queries; you should see either responses from the dialog skill, or sections of documents from your Discovery corpus.
+
+Customise to your own taste.
