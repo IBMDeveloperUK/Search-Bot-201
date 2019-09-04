@@ -29,7 +29,7 @@ and optionally, [Red Hat OpenShift](https://www.openshift.com/) (through [Minish
 
 ![node-red](/assets/node-red.png)
 
-If you have yet had the pleasure of building applications with Node-RED, check out the [Node-RED 101 workshop](https://github.com/IBMDeveloperUK/Node-RED-Watson-101). Follow this workshop up to the end of the [http server](https://github.com/IBMDeveloperUK/Node-RED-Watson-101#creating-a-server-with-the-http-node) section to get a basic Node-RED application running the IBM Cloud. This will give the basic experience needed to build  Node-RED applications on any of its supported platforms.
+If you have yet had the pleasure of building applications with Node-RED, check out the [Node-RED introduction](https://github.com/watson-developer-cloud/node-red-labs/tree/master/introduction_to_node_red). This will give you the basic experience needed to build  Node-RED applications on any of its supported platforms.
 
 ## Watson Assistant
 
@@ -64,3 +64,14 @@ If you would like to try running Node-RED as an OpenShift node.js application, y
 ![minishift](/assets/minishift.png)
 
 To get the experience of using Openshift as a delivery platform, you can use the Minishift local installation - you'll find a lightweight introduction to this at [Minishift 101](https://github.com/IBMDeveloperUK/minishift101)
+
+# Discovery Assistant
+
+The following tutorial shows how to set up a Search Assistant using a combination of a dialog skill and a search skill.
+
+The use of search skills requires that your Watson Assistant service instance be either upgraded to the Plus plan, or enabled for the free Plus plan 30-day trail.
+
+![plus-plan-trial](/assets/plus-plan-trial.png)
+
+[create a search assistant](https://cloud.ibm.com/docs/services/assistant?topic=assistant-skill-search-add)
+
