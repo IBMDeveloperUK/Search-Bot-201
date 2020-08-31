@@ -1,4 +1,8 @@
 # Search-Bot-201 - enhancing your Watson Chatbot with Discovery
+
+http://ibm.biz/chatbot_discover
+
+
 Build a chatbot to handle conversational search against a document base with Watson Discovery and Watson Assistant
 
 A common scenario for chatbots, voice assistants, and agents to answer user questions from preconfigured "FAQ" responses, or produce search results from a set of documents and content relevant to the user's domain.
@@ -21,7 +25,9 @@ this workshop will exploit capabilities in the following technologies:
 + Watson Assistant - natural language dialog support
 + Watson Discovery - content/document query and retrieval
 
-using a choice of:
+You *will* need a IBM Cloud account [sign up here](http://ibm.biz/chatbot_discover) - **initially free**, but you're welcome to upgrade to "Pay As You Go"
+
+Node-RED will be used to create custom front-ends, and additional integration options, and can be deployed using a choice of:
 1. IBM Cloud [Node-RED Starter application](https://developer.ibm.com/components/node-red/tutorials/how-to-create-a-node-red-starter-application/)
 1. [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https://github.com/minishift/minishift)) as the Cloud Network component.
 1. Locally installed Node-RED
