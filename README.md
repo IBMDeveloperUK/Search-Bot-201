@@ -402,4 +402,5 @@ Handy tutorials if you would like to explore Watson Assistant and/or Watson Disc
 1. [Sample Apps](https://cloud.ibm.com/docs/assistant?topic=assistant-sample-apps)
 1. [youtube playlist - Watson Assistant](https://www.youtube.com/playlist?list=PLZDyxLlNKRY8zx37vPh6s_pCtOXIp_5yL)
 1. [youtube playlist - Watson Discovery](https://www.youtube.com/playlist?list=PLZDyxLlNKRY_GJskIreh9sQgExJ4z8oZO)
+1. [Gary Wilson's Assistant labs](https://github.com/garyrwilson/Watson-Assistant-Labs) 
 
