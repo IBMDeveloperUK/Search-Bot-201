@@ -1,5 +1,5 @@
-# search-bot-201
-Build a chatbot in OpenShift to handle conversational search against a document base with Watson Discovery and Watson Assistant
+# Search-Bot-201 - enhancing your Watson Chatbot with Discovery
+Build a chatbot to handle conversational search against a document base with Watson Discovery and Watson Assistant
 
 A common scenario for chatbots, voice assistants, and agents to answer user questions from preconfigured "FAQ" responses, or produce search results from a set of documents and content relevant to the user's domain.
 
@@ -17,11 +17,14 @@ Think [Siri](https://www.apple.com/siri/), and its "here's what I found on the w
 # Setup and preparation
 
 this workshop will exploit capabilities in the following technologies:
-+ Node-RED - flow-based programming toll and environment
++ Node-RED - flow-based programming tool and environment
 + Watson Assistant - natural language dialog support
 + Watson Discovery - content/document query and retrieval
 
-using [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https://github.com/minishift/minishift)) as the Cloud Network component.
+using a choice of:
+1. IBM Cloud [Node-RED Starter application](https://developer.ibm.com/components/node-red/tutorials/how-to-create-a-node-red-starter-application/)
+1. [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https://github.com/minishift/minishift)) as the Cloud Network component.
+1. Locally installed Node-RED
 
 ## Node-RED
 
@@ -29,7 +32,7 @@ using [Red Hat OpenShift](https://www.openshift.com/) (through [Minishift](https
 
 ![node-red](/assets/node-red.png)
 
-If you have yet had the pleasure of building applications with Node-RED, check out
+If you have not yet had the pleasure of building applications with Node-RED, check out
 
 **Tutorial:** [Node-RED introduction](https://github.com/watson-developer-cloud/node-red-labs/tree/master/introduction_to_node_red). 
 
@@ -61,8 +64,10 @@ To get some experience with loading up a document corpus into Watson Discovery, 
 
 **Tutorial:** [Discovery tutorial on Youtube](https://youtu.be/rlWvyV7vGc8 "Discovery")
 
-## Openshift/Minishift
-
+<details><summary>
+	<b>Openshift/Minishift deployment option</b>
+	</summary>
+<!-- VVVVVVVVVVVVV -->
 While the Watson Discovery and Assistant services require you to have an IBM Cloud account, the Node-RED application can be run on most platforms that support node.js, as long as there is connectivity to the service instances in the IBM Cloud.
 
 If you would like to try running Node-RED as an OpenShift node.js application, you can setup a local 
@@ -78,20 +83,29 @@ To get the experience of using Openshift as a delivery platform, you can use the
 If you have working Minishift environment, you can deploy Node-RED into the cluster using the steps in this workshop:
 
 [Node-RED starter](https://github.com/IBMDeveloperUK/node-red-workshop-starter)
+<!-- AAAAAAAAAAAAAA -->
+</details>
 
 # Discovery Assistant
 
-The following tutorial shows how to set up a Search Assistant using a combination of a dialog skill and a search skill.
+For this workshop, because we all need (and want) to know about **General Data Protection Regulation**, we will create:
+1. Watson Dialog Skill to guide the user conversation -- based on an example [GDPR Advisor bot](https://github.com/IBM/bots/tree/master/bots/gdpr_advisor)
+1. Watson Discovery data collection, using a website crawler -- based on the UK Information Commisioner's Office 
+[GDPR Guide](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/)
+1. Watson Search Skill which references the Discovery collection, making it searchable by Watson Assistant
+1. Watson Assistant instance that combines the Dialog and Search skills to produce an enhanced information service
 
 **Note:** The use of search skills requires that your Watson Assistant service instance be either upgraded to the Plus plan, or enabled for the free Plus plan 30-day trail.
 
 ![plus-plan-trial](/assets/plus-plan-trial.png)
 
+The following tutorial shows how to set up a Search Assistant using a combination of a dialog skill and a search skill.
+
 **Tutorial:** [create a Watson Search Assistant](https://cloud.ibm.com/docs/services/assistant?topic=assistant-skill-search-add)
 
 # Discovery Chatbot
 
-Once you have a Watson Discovery instance, and a Watson Assistant service, you can build a chatbot application to manage the flow of interactions and information presentation between the user and the Assistant and Discovery services.
+Once you have a Watson Discovery instance, and a Watson Assistant service, and can demonstrate interacting with the bot through the default web preview link, you can build a chatbot application to manage the flow of interactions and information presentation between the user and the Watson Assistant service.
 
 This is where Node-RED can be used to rapidly build a user interface, and logic flow.
 
@@ -100,7 +114,7 @@ This is where Node-RED can be used to rapidly build a user interface, and logic 
 This flow can be created by importing the following json into the Node-RED editor:
 
 <details>
-	<summary>Node-red-flow json source</summary>
+	<summary><b>Node-red-flow json source</b></summary>
 	
 ```
 [{
