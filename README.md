@@ -388,4 +388,7 @@ After importing the flow into Node-RED, you will need to configure the `assistan
 
 Deploy the updates to Node-RED, and visit the `/chat` page of your Node-RED application, and entry queries; you should see either responses from the dialog skill, or sections of documents from your Discovery corpus.
 
-Customise to your own taste.
+If all goes well, you should have a basic chat and search bot like this:
+![node-red-chat](/assets/node-red-chat-results.png)
+
+Unless you have a thing for brutally ugly user interfaces, please customise to your own taste ...
