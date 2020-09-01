@@ -396,11 +396,12 @@ Unless you have a thing for brutally ugly user interfaces, please customise to y
 
 ## Links ##
 
-Handy tutorials if you would like to explore Watson Assistant and/or Watson Discovery in more detail:
+Tutorials, demos and applications if you would like to explore Watson Assistant and/or Watson Discovery in more detail:
 
 1. [Demos and Hands-on Labs](https://www.ibm.com/demos/collection/Watson-Assistant/)
 1. [Sample Apps](https://cloud.ibm.com/docs/assistant?topic=assistant-sample-apps)
 1. [youtube playlist - Watson Assistant](https://www.youtube.com/playlist?list=PLZDyxLlNKRY8zx37vPh6s_pCtOXIp_5yL)
 1. [youtube playlist - Watson Discovery](https://www.youtube.com/playlist?list=PLZDyxLlNKRY_GJskIreh9sQgExJ4z8oZO)
-1. [Gary Wilson's Assistant labs](https://github.com/garyrwilson/Watson-Assistant-Labs) 
+1. [Gary Wilson's Assistant labs](https://github.com/garyrwilson/Watson-Assistant-Labs)
+1. [COVID-19 chatbot](https://developer.ibm.com/callforcode/get-started/covid-19/crisis-communication/)
 
