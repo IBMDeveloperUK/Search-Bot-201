@@ -109,6 +109,9 @@ The following tutorial shows how to set up a Search Assistant using a combinatio
 
 **Tutorial:** [create a Watson Search Assistant](https://cloud.ibm.com/docs/services/assistant?topic=assistant-skill-search-add)
 
+The standalone web integration of the Dialog skill and the Search skill should look something like this:
+![standalone integrated search](/assets/watson-assistant-search-standalone.png)
+
 # Discovery Chatbot
 
 Once you have a Watson Discovery instance, and a Watson Assistant service, and can demonstrate interacting with the bot through the default web preview link, you can build a chatbot application to manage the flow of interactions and information presentation between the user and the Watson Assistant service.
